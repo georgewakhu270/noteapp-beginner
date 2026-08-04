@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Notes</h1>
+{% for mynote in note_list %}
+<div>
+    <h1><a href="{{ mynote.get_absolute_url }}">{{ mynote.title }}</a></h1>
+    <p>by {{ mynote.author }}</p>
+    <p>{{ mynote.body }}</p>
+</div>
+{% endfor %}
+{% endblock %}
