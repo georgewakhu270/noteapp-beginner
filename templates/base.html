@@ -6,11 +6,22 @@
     <title>Notes</title>
 </head>
 <body>
+    {% if user.is_authenticated %}
     <header>
         <a href="{% url 'note_view' %}">Notes</a>
         <a href="{% url 'note_new' %}">Add</a>
+        <form action="{% url 'logout' %}" method="post">
+            {% csrf_token %}
+            <button type="submit">Log Out</button>
+        </form>
     </header>
-    {% block content %}
-    {% endblock %}
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+    {% else %}
+    <a href="{% url 'login' %}">login</a>
+    
+    {% endif %}
 </body>
 </html>
