@@ -2,11 +2,27 @@
 
 {% block content %}
 <h1>Notes</h1>
-{% for mynote in note_list %}
-<div>
-    <h1><a href="{{ mynote.get_absolute_url }}">{{ mynote.title }}</a></h1>
-    <p>by {{ mynote.author }}</p>
-    <p>{{ mynote.body }}</p>
+<div class="card-list-div">
+    {% for mynote in note_list %}
+    <div class="card-wrapper">
+        <div class="head">
+            <h2>
+                <a href="{{ mynote.get_absolute_url }}">{{ mynote.title }}</a>
+            </h2>
+            <p>by {{ mynote.author }} | Created on {{ mynote.created_at }}</p>
+        </div>
+        <p class="body">
+            <span>
+                {{ mynote.reduce_body }}
+            </span>
+            <a href="{% url 'note_detail' pk=mynote.pk %}">read more...</a>
+        </p>
+        <div class="links">
+            <a href="{% url 'note_update' pk=mynote.pk %}" class="edit">Edit</a>
+            <a href="{% url 'note_delete' pk=mynote.pk %}" class="delete">Delete</a>
+        </div>
+    </div>
+    {% endfor %}
 </div>
-{% endfor %}
+
 {% endblock %}

@@ -15,3 +15,6 @@ class Note(models.Model):
 
     def get_absolute_url(self):
         return reverse('note_detail', kwargs={'pk': self.pk})
+
+    def reduce_body(self):
+        return self.body[:100]

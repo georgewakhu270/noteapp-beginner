@@ -1,12 +1,14 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Notes</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 <body>
-    {% if user.is_authenticated %}
     <header>
         <a href="{% url 'note_view' %}">Notes</a>
         <a href="{% url 'note_new' %}">Add</a>
@@ -19,9 +21,7 @@
         {% block content %}
         {% endblock %}
     </main>
-    {% else %}
-    <a href="{% url 'login' %}">login</a>
-    
-    {% endif %}
+
+    <script src="{% static 'js/function.js' %}"></script>
 </body>
 </html>
