@@ -18,6 +18,9 @@ class NoteView(LoginRequiredMixin, ListView):
 
     login_url = reverse_lazy('login')
 
+    def get_queryset(self):
+        return Note.objects.filter(author=self.request.user)
+
 class NoteDetailView(LoginRequiredMixin, DetailView):
     model = Note
     template_name = 'mynote/detail.html'

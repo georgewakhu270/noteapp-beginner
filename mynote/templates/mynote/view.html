@@ -3,6 +3,7 @@
 {% block content %}
 <h1>Notes</h1>
 <div class="card-list-div">
+    {% if mynote.length > 0 %}
     {% for mynote in note_list %}
     <div class="card-wrapper">
         <div class="head">
@@ -23,6 +24,11 @@
         </div>
     </div>
     {% endfor %}
+    {% else %}
+    <div>
+        <p>You don't have any notes at the moment</p>
+    </div>
+    {% endif %}
 </div>
 
 {% endblock %}
