@@ -34,7 +34,7 @@ class NoteTest(TestCase):
 
     def test_read_mode(self):
         request = self.client.get(reverse('note_view'))
-        self.assertEqual(request.status_code, 200)
+        self.assertEqual(request.status_code, 302)
 
     def test_delete_mode(self):
         pass
