@@ -47,9 +47,63 @@ form input[type='submit']:hover {
     margin: auto;
 }
 
-/* login page /accounts/login/ */
+/* header */
+header {
+    display: flex;
+    align-items: center;
+    align-content: space-around;
+    position: fixed;
+    width: 100%;
+    padding: 10px 0;
+    background-color: gray;
+    z-index: 100;
+}
 
-.login-div, .reg-form {
+header > div {
+    flex-grow: 1;
+}
+
+header a {
+    text-decoration: none;
+    color: ghostwhite;
+}
+
+header a:hover {
+    text-decoration: underline;
+    color: rgb(23, 23, 153);
+}
+
+header .nav-items {
+    display: flex;
+    align-items: center;
+    align-content: space-evenly;
+}
+
+header .nav-items a {
+    flex-grow: 1;
+}
+
+header .nav-logout button {
+    right: 0;
+    border: none;
+    color: rgb(146, 28, 28);
+    background: none;
+}
+
+header .nav-logout button:hover {
+    text-decoration: underline;
+    color: rgb(194, 38, 38);
+}
+
+/* main */
+main {
+    position: relative;
+    top: 50px;
+}
+
+/* login page and signup /accounts/login/  /signup/ */
+
+.reg-form {
     height: 100vh;
     padding: 10px;
     width: 500px;

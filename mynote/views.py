@@ -1,4 +1,4 @@
-from django.views.generic import ListView, DetailView, UpdateView, CreateView, DeleteView
+from django.views.generic import ListView, DetailView, UpdateView, CreateView, DeleteView, TemplateView
 from django.shortcuts import render
 from django.contrib.auth.mixins import LoginRequiredMixin
 
@@ -8,6 +8,12 @@ from django.urls import reverse_lazy
 from .models import Note
 
 # Create your views here.
+
+class HomePage(TemplateView):
+    template_name = 'home.html'
+
+class AboutPage(TemplateView):
+    template_name = 'about.html'
 
 def home(request):
     return render(request, 'home.html')

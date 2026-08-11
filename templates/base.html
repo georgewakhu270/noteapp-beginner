@@ -10,18 +10,29 @@
 </head>
 <body>
     <header>
-        <a href="{% url 'note_view' %}">Notes</a>
-        <a href="{% url 'note_new' %}">Add</a>
-        <form action="{% url 'logout' %}" method="post">
-            {% csrf_token %}
-            <button type="submit">Log Out</button>
-        </form>
+        <div>
+            <h1>
+                <a href="{% url 'note_view' %}">Hello {{user}}!</a>
+            </h1>
+        </div>
+        <div class="nav-items">
+            <a href="{% url 'note_view' %}">Notes</a>
+            <a href="{% url 'note_new' %}">+ Add</a>
+            <a href="{% url 'about' %}">About</a>
+            <a href="">Contacts</a>
+        </div>
+        <div class="nav-logout">
+            <form action="{% url 'logout' %}" method="post">
+                {% csrf_token %}
+                <button type="submit">Log Out</button>
+            </form>
+        </div>
     </header>
     <main>
         {% block content %}
         {% endblock %}
     </main>
-
+    <footer></footer>
     <script src="{% static 'js/function.js' %}"></script>
 </body>
 </html>

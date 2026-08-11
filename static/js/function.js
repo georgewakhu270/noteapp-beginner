@@ -12,7 +12,7 @@ document.addEventListener('mouseenter', (event) => {
         const div = document.querySelector('.signin #id_password2_helptext');
         if (div) div.style.display = 'block';
     }
-}, true); // `true` is required for 'mouseenter' to capture events globally
+}, true); 
 
 document.addEventListener('mouseleave', (event) => {
     if (event.target.matches('.signin #id_username')) {
