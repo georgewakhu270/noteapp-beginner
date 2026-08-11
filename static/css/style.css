@@ -237,7 +237,126 @@ main {
 
 /* update page /notes/<int:pk>/update */
 
+/* detail page /notes/<int:pk>/ */
+.detail-page {
+    width: 80%;
+    padding: 1.1rem;
+    margin: auto;
+}
+
+.detail-page h1 {
+    text-transform: capitalize;
+    font-size: 1.4rem;
+}
+
+.detail-page .head {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.detail-page .head p {
+    font-size: 1.1rem;
+    margin: 0 4px;
+    font-style: italic;
+}
+
+.detail-page .detail-data .data {
+    padding: 20px 0;
+}
+
+.detail-data .update {
+    color: green;
+}
+
+.detail-data .update:hover {
+    color: rgb(11, 180, 11);
+}
+
+.detail-data .delete {
+    color: red;
+}
+
+.detail-data .delete:hover {
+    color: rgb(206, 62, 62);
+}
+
+/* delete page /notes/<int:pk>/delete/ */
+.delete-page {
+    padding: 1.1rem;
+    margin: auto;
+    width: 80%;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    min-height: 100vh;
+}
 
 
+.delete-page input[type='submit']{
+    background-color: red;
+    color: white;
+}
 
+.delete-page input[type='submit']:hover {
+    background-color: white;
+    color: red;
+    border: red solid 1px;
+}
 
+.delete-page #data {
+    color: red;
+}
+
+/* for serving all the messages */
+#flash-messages {
+    position: fixed;
+    top: 75px; /* Pushed down below the 50px header + padding */
+    right: 20px;
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-width: 350px;
+    width: 100%;
+}
+
+/* Individual alert box styling */
+#flash-messages .alert {
+    padding: 14px 18px;
+    border-radius: 6px;
+    font-family: inherit;
+    font-size: 0.95rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    background-color: #ffffff;
+    border-left: 5px solid #2ecc71; /* Default green accent */
+    color: #2c3e50;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* Django specific message tags styling */
+#flash-messages .alert.success {
+    border-left-color: #27ae60;
+    background-color: #eafaf1;
+    color: #145a32;
+}
+
+#flash-messages .alert.error {
+    border-left-color: #c0392b;
+    background-color: #f5b7b1;
+    color: #78281f;
+}
+
+#flash-messages .alert.warning {
+    border-left-color: #f39c12;
+    background-color: #fef9e7;
+    color: #7d6608;
+}
+
+#flash-messages .alert.info {
+    border-left-color: #2980b9;
+    background-color: #ebf5fb;
+    color: #1b4f72;
+}

@@ -1,10 +1,18 @@
 {% extends 'base.html' %}
 
 {%  block content %}
-<h1>{{ note.title }}</h1>
-<p>by {{ note.author }}</p>
-<p>{{ note.body }}</p>
-<p>created on {{ note.created_at }} | updated on {{ note.updated_at }}</p>
-<a href="{% url 'note_update' pk=note.pk %}">Update</a>
-<a href="{% url 'note_delete' pk=note.pk %}">delete</a>
+<div class="detail-page">
+    <div class="head">
+        <h1>{{ note.title }}</h1> 
+        <p>by {{ note.author }}</p>
+    </div>
+    
+    <div class="detail-data">
+        
+        <p class="data">{{ note.body }}</p>
+        <p style="font-style: italic;">created on {{ note.created_at }} | updated on {{ note.updated_at }}</p>
+        <a class="update" href="{% url 'note_update' pk=note.pk %}">Update</a>
+        <a class="delete" href="{% url 'note_delete' pk=note.pk %}">Delete</a>
+    </div>
+</div>
 {% endblock %}
