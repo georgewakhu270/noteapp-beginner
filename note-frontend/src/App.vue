@@ -1,7 +1,8 @@
 <script setup>
-import HelloWorld from './components/HelloWorld.vue'
+import AllNotes from './components/AllNotes.vue';
+
 </script>
 
 <template>
-  <HelloWorld />
+  <AllNotes />  
 </template>

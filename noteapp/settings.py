@@ -38,11 +38,14 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    'corsheaders',
     'mynote',
     'accounts'
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.security.SecurityMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -123,5 +126,7 @@ STATICFILES_DIRS = [BASE_DIR/"static"]
 LOGIN_REDIRECT_URL = 'note_view'
 LOGOUT_REDIRECT_URL = 'home'
 
-
+CORS_ALLOWED_ORIGINS = [
+    'http://localhost:5173'
+]
 
