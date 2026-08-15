@@ -1,9 +1,20 @@
+# the django
 from django.views.generic import ListView, DetailView, UpdateView, CreateView, DeleteView, TemplateView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib import messages
 from django.utils.timezone import datetime
 from django.urls import reverse_lazy
 
+# for django-rest
+from rest_framework.views import APIView
+from rest_framework.viewsets import ModelViewSet
+from rest_framework.permissions import IsAuthenticated
+from rest_framework.response import Response
+from rest_framework import status, generics
+
+from .serializers import NoteSerializer
+
+# models
 from .models import Note
 
 # Create your views here.
@@ -37,7 +48,6 @@ class NoteUpdateView(LoginRequiredMixin, UpdateView):
     login_url = reverse_lazy('login')
 
     def form_valid(self, form):
-        form.instance.updated_at = datetime.isoformat(datetime.now())
         messages.success(self.request, 'Updated your note')
         return super().form_valid(form)
 
@@ -51,7 +61,6 @@ class NoteCreateView(LoginRequiredMixin, CreateView):
     
     def form_valid(self, form):
         form.instance.author = self.request.user
-        form.instance.created_at = form.instance.updated_at = datetime.isoformat(datetime.now())
         messages.success(self.request, "Created a new note")
         return super().form_valid(form)
 
@@ -65,3 +74,14 @@ class NoteDeleteView(LoginRequiredMixin, DeleteView):
     def form_valid(self, form):
         messages.success(self.request, 'Your note was successfully deleted')
         return super().form_valid(form)
+
+
+# the views of api
+class NoteViewSet(ModelViewSet):
+    queryset = Note.objects.all().order_by('-created_at')
+    serializer_class = NoteSerializer
+    permission_classes = [IsAuthenticated]
+
+    def perform_create(self, serializer):
+        # Automatically set the author to the currently authenticated user
+        serializer.save(author=self.request.user)
