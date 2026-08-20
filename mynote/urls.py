@@ -17,4 +17,9 @@ urlpatterns = [
 
     # path('api/notes', NoteListSerializerView.as_view(), name='api_get')
     path('api/', include(router.urls)),
+    path('api/csrf/', CSRFTokenView.as_view(), name='api_csrf'),
+    path('api/login/', LoginView.as_view(), name='api_login'),
+    path('api/logout/', LogoutView.as_view(), name='api_logout'),
+    path('api/user/', CurrentUserView.as_view(), name='api_user'),
+
 ]
